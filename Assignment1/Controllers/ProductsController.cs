@@ -1,9 +1,6 @@
 ﻿using Assignment1.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Assignment1.Controllers
 {
@@ -39,6 +36,70 @@ namespace Assignment1.Controllers
                 _db.Products.Add(obj);
                 _db.SaveChanges();
                return RedirectToAction("Index");
+            }
+            return View(obj);
+
+        }
+
+
+        // GET - Edit
+        [HttpGet]
+        public IActionResult Edit(int? Id)
+        {
+            if (Id == null || Id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _db.Products.Find(Id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+
+
+        //POST Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Products obj)
+        { 
+            if (ModelState.IsValid)
+            {
+                _db.Products.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+
+        }
+
+        // GET - Delete
+        [HttpGet]
+        public IActionResult Delete(int? Id)
+        {
+            if (Id == null || Id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _db.Products.Find(Id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(Products obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Products.Remove(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
             }
             return View(obj);
 

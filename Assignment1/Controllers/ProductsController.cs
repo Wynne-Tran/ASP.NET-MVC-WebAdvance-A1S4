@@ -2,11 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
+
 namespace Assignment1.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly ProductsContext _db;
+        private ProductsContext _db { get; set; }
 
         public ProductsController(ProductsContext db)
         {
@@ -23,47 +24,37 @@ namespace Assignment1.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            ViewBag.Action = "Create";
+            return View("Edit", new Products());
         }
 
-        //POST CREATE
+
+        [HttpGet]
+        public IActionResult Edit(int Id)
+        {
+            ViewBag.Action = "Edit";
+            var obj = _db.Products.Find(Id);
+            return View(obj);
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Products obj)
         {
-           if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _db.Products.Add(obj);
                 _db.SaveChanges();
-               return RedirectToAction("Index");
-            }
-            return View(obj);
-
-        }
-
-
-        // GET - Edit
-        [HttpGet]
-        public IActionResult Edit(int? Id)
-        {
-            if (Id == null || Id == 0)
-            {
-                return NotFound();
-            }
-            var obj = _db.Products.Find(Id);
-            if (obj == null)
-            {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(obj);
         }
 
-
-        //POST Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Products obj)
-        { 
+        {
             if (ModelState.IsValid)
             {
                 _db.Products.Update(obj);
@@ -71,7 +62,6 @@ namespace Assignment1.Controllers
                 return RedirectToAction("Index");
             }
             return View(obj);
-
         }
 
         // GET - Delete

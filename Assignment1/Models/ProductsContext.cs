@@ -20,15 +20,7 @@ namespace Assignment1.Models
                     ProductsId = 1,
                     Code = "A001",
                     Name = "Wynne",
-                    Price = 100.5,
-                    Rdate = DateTime.Now
-                },
-                new Products
-                {
-                    ProductsId = 2,
-                    Code = "A002",
-                    Name = "Hoang",
-                    Price = 10.5,
+                    Price = 100.89M,
                     Rdate = DateTime.Now
                 }
                 );

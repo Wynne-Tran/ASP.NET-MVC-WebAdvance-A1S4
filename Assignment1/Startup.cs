@@ -34,7 +34,7 @@ namespace Assignment1
             services.AddControllersWithViews();
 
             services.AddDbContext<ProductsContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("MovieContext")));
+                options.UseSqlServer(Configuration.GetConnectionString("ProductsContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -34,8 +34,8 @@ namespace Assignment1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("Rdate")
                         .HasColumnType("datetime2");
@@ -50,8 +50,8 @@ namespace Assignment1.Migrations
                             ProductsId = 1,
                             Code = "A001",
                             Name = "Wynne",
-                            Price = 100.5,
-                            Rdate = new DateTime(2021, 2, 4, 6, 22, 15, 477, DateTimeKind.Local).AddTicks(5189)
+                            Price = 100.89m,
+                            Rdate = new DateTime(2021, 2, 6, 21, 19, 11, 205, DateTimeKind.Local).AddTicks(4639)
                         });
                 });
 #pragma warning restore 612, 618

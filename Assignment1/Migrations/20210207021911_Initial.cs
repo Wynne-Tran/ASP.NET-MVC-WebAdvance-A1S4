@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Assignment1.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace Assignment1.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Rdate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -26,7 +26,7 @@ namespace Assignment1.Migrations
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductsId", "Code", "Name", "Price", "Rdate" },
-                values: new object[] { 1, "A001", "Wynne", 100.5, new DateTime(2021, 2, 4, 6, 22, 15, 477, DateTimeKind.Local).AddTicks(5189) });
+                values: new object[] { 1, "A001", "Wynne", 100.89m, new DateTime(2021, 2, 6, 21, 19, 11, 205, DateTimeKind.Local).AddTicks(4639) });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

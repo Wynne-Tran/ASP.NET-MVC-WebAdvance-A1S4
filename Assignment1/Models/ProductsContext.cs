@@ -12,6 +12,7 @@ namespace Assignment1.Models
         {
         }
         public DbSet<Products> Products { get; set; }
+        public DbSet<Technicians> Technicians { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Products>().HasData(
@@ -22,6 +23,16 @@ namespace Assignment1.Models
                     Name = "Wynne",
                     Price = 100.89M,
                     Rdate = DateTime.Now
+                }
+                );
+
+            modelBuilder.Entity<Technicians>().HasData(
+                new Technicians
+                {
+                    TechniciansId = 1,
+                    Name = "Wynne",
+                    Email = "thihoangtram.tran@georgebrown.ca",
+                    Phone = "4167221285"
                 }
                 );
         }

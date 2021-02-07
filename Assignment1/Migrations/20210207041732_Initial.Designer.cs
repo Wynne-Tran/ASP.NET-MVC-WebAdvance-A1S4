@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment1.Migrations
 {
     [DbContext(typeof(ProductsContext))]
-    [Migration("20210207021911_Initial")]
+    [Migration("20210207041732_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,7 +53,40 @@ namespace Assignment1.Migrations
                             Code = "A001",
                             Name = "Wynne",
                             Price = 100.89m,
-                            Rdate = new DateTime(2021, 2, 6, 21, 19, 11, 205, DateTimeKind.Local).AddTicks(4639)
+                            Rdate = new DateTime(2021, 2, 6, 23, 17, 32, 360, DateTimeKind.Local).AddTicks(6787)
+                        });
+                });
+
+            modelBuilder.Entity("Assignment1.Models.Technicians", b =>
+                {
+                    b.Property<int>("TechniciansId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TechniciansId");
+
+                    b.ToTable("Technicians");
+
+                    b.HasData(
+                        new
+                        {
+                            TechniciansId = 1,
+                            Email = "thihoangtram.tran@georgebrown.ca",
+                            Name = "Wynne",
+                            Phone = "4167221285"
                         });
                 });
 #pragma warning restore 612, 618

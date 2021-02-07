@@ -23,16 +23,39 @@ namespace Assignment1.Migrations
                     table.PrimaryKey("PK_Products", x => x.ProductsId);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Technicians",
+                columns: table => new
+                {
+                    TechniciansId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Technicians", x => x.TechniciansId);
+                });
+
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductsId", "Code", "Name", "Price", "Rdate" },
-                values: new object[] { 1, "A001", "Wynne", 100.89m, new DateTime(2021, 2, 6, 21, 19, 11, 205, DateTimeKind.Local).AddTicks(4639) });
+                values: new object[] { 1, "A001", "Wynne", 100.89m, new DateTime(2021, 2, 6, 23, 17, 32, 360, DateTimeKind.Local).AddTicks(6787) });
+
+            migrationBuilder.InsertData(
+                table: "Technicians",
+                columns: new[] { "TechniciansId", "Email", "Name", "Phone" },
+                values: new object[] { 1, "thihoangtram.tran@georgebrown.ca", "Wynne", "4167221285" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Technicians");
         }
     }
 }

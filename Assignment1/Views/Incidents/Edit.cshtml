@@ -1,0 +1,125 @@
+﻿@model Assignment1.Models.Incidents
+
+@{
+    string title = ViewBag.Action + " Incidents";
+    ViewBag.Title = title;
+}
+
+<h2>@title</h2>
+
+<form method="post">
+    <!--This line for validation after put [required] in Category controller-->
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+        <div class="col-8">
+            <input type="hidden" asp-for="IncidentsId" />
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="CustomersId">Customer</label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="CustomersId" class="form-control">
+                        <option value="">select a customer's name</option>
+                        @foreach (Customers g in ViewBag.Customers)
+                        {
+                            <option value="@g.CustomersId">@g.FirstName @g.LastName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ProductsId">Products</label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="ProductsId" class="form-control">
+                        <option value="">select a product's name</option>
+                        @foreach (Products g in ViewBag.Products)
+                        {
+                            <option value="@g.ProductsId">@g.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="IncidentsId">Title</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="Title" class="form-control" />
+                    <!--Check validation here from model-->
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="IncidentsId">Description</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="Description" class="form-control" />
+                    <!--Check validation here from model-->
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="TechniciansId">Technician</label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="TechniciansId" class="form-control">
+                        <option value="">select a technician's name</option>
+                        @foreach (Technicians g in ViewBag.Technicians)
+                        {
+                            <option value="@g.TechniciansId">@g.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="DayOpen">Day Open</label>
+
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="DayOpen" class="form-control" />
+                    <span asp-validation-for="DayOpen" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="DayClose">Day Close</label>
+
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="DayClose" class="form-control" />
+                    <span asp-validation-for="DayClose" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-4 row">
+                    <table class="col-8 offset-4 row">
+                        <tr class=" col">
+
+                            <td> <input type="submit" class="btn btn-info w=100 text-right" value="Save" /></td>
+                            <td><a asp-action="Index" class="btn btn-success w=140 text-right"> Cancel</a></td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</form>

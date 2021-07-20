@@ -1,0 +1,133 @@
+﻿@model Assignment1.Models.Customers
+
+@{
+    string title = ViewBag.Action + " Customer";
+    ViewBag.Title = title;
+}
+
+<h2>@title</h2>
+<p class="text-danger" >Do you really want to delete: </p>
+<form method="post" >
+  
+    <div class="row">
+        <div class="col-8">
+            <input type="hidden" asp-for="CustomersId" />
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="FirstName">First Name</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="FirstName" class="form-control" readonly/>
+                    <!--Check validation here from model-->
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="LastName">Last Name</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="LastName" class="form-control" readonly/>
+                    <!--Check validation here from model-->
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Address">Address</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="Address" class="form-control" readonly/>
+                    <!--Check validation here from model-->
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="City">City</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="City" class="form-control" readonly/>
+                    <!--Check validation here from model-->
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="State">State</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="State" class="form-control" readonly/>
+                    <!--Check validation here from model-->
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="PostalCode">PostalCode</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="PostalCode" class="form-control" readonly/>
+                    <!--Check validation here from model-->
+                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="CountryId">Country</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="nation.Name" class="form-control" readonly />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Email">Email</label>
+
+                </div>
+                <div class="col-8">
+                    <!-- using asp-for to post value to database, other pasge...-->
+                    <input type="text" asp-for="Email" class="form-control" readonly/>
+                    <!--Check validation here from model-->
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Phone">Phone</label>
+
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="Phone" class="form-control" readonly/>
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-4 row">
+                    <table class="col-8 offset-4 row">
+                        <tr class=" col">
+
+                            <td> <input type="submit" class="btn btn-danger w=100 text-right" value="Delete" /></td>
+                            <td><a asp-action="Index" class="btn btn-success w=140 text-right"> Cancel</a></td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</form>

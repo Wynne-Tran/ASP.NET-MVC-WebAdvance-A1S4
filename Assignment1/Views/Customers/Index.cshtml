@@ -1,13 +1,13 @@
 ﻿
-@model IEnumerable<Assignment1.Models.Technicians>
+@model IEnumerable<Assignment1.Models.Customers>
 @{
-    ViewData["Title"] = "Technicians";
+    ViewData["Title"] = "Customer";
 }
 <div class="container p-3">
 
     <div class="row pt-4">
         <div class="col-6">
-            <h2> Technician Manager</h2>
+            <h2> Customer Manager</h2>
         </div>
 
     </div>
@@ -19,7 +19,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Phone</th>
+                    <th>City</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -28,19 +28,19 @@
                 @foreach (var obj in Model)
                 {
                     <tr>
-                        <td>@obj.Name</td>
+                        <td>@obj.FirstName @obj.LastName</td>
                         <td>@obj.Email</td>
-                        <td>@string.Format("{0}-{1}-{2}", obj.Phone.Substring(0, 3), obj.Phone.Substring(3, 3), obj.Phone.Substring(6, 4))</td>
+                        <td>@obj.City</td>
                         <td class=" text-center">
                             <div>
-                                <a asp-controller="Technicians" asp-route-Id="@obj.TechniciansId" asp-action="Edit" class="btn btn-primary">Edit</a>
+                                <a asp-controller="Customers" asp-route-Id="@obj.CustomersId" asp-action="Edit" class="btn btn-primary">Edit</a>
 
                             </div>
                         </td>
                         <td class=" text-center">
                             <div>
 
-                                <a asp-controller="Technicians" asp-route-Id="@obj.TechniciansId" asp-action="Delete" class="btn btn-danger ">Delete</a>
+                                <a asp-controller="Customers" asp-route-Id="@obj.CustomersId" asp-action="Delete" class="btn btn-danger ">Delete</a>
 
                             </div>
                         </td>
@@ -49,14 +49,14 @@
             </tbody>
         </table>
         <div class="col-6 ">
-            <a asp-controller="Technicians" asp-action="Create" class="btn btn-primary">
-                Add Technician
+            <a asp-controller="Customers" asp-action="Create" class="btn btn-primary">
+                Add Customer
             </a>
         </div>
     }
     else
     {
-        <p>No Technician Exists !</p>
+<p>No Customer Exists !</p>
     }
 </div>
 

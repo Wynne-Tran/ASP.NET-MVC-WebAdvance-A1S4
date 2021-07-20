@@ -1,0 +1,109 @@
+﻿@model Assignment1.Models.Incidents
+
+@{
+    string title = ViewBag.Action + " Incident";
+    ViewBag.Title = title;
+}
+
+<h2>@title</h2>
+<p class="text-danger">Do you really want to delete: </p>
+<form method="post">
+    
+    <div class="row">
+        <div class="col-8">
+            <input type="hidden" asp-for="IncidentsId" />
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="CustomersId">Customer</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="CustomerName.Name" class="form-control" readonly />
+                    
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ProductsId">Products</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="ProductName.Name" class="form-control" readonly />
+                    <input type="hidden" asp-for="ProductName.Code" />
+                    <input type="hidden" asp-for="ProductName.Price" />
+                    
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Title">Title</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="Title" class="form-control" readonly />
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Description">Description</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="Description" class="form-control" readonly />
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="TechniciansId">Technician</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="TechnicianName.Name" class="form-control" readonly />
+                    <input type="hidden" asp-for="TechnicianName.Email" />
+                    <input type="hidden" asp-for="TechnicianName.Phone" />
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="DayOpen">Day Open</label>
+
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="DayOpen" class="form-control" readonly />
+                    <span asp-validation-for="DayOpen" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="DayClose">Day Close</label>
+
+                </div>
+                <div class="col-8">
+                    <input type="text" asp-for="DayClose" class="form-control" readonly />
+                    <span asp-validation-for="DayClose" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-4 row">
+                    <table class="col-8 offset-4 row">
+                        <tr class=" col">
+
+                            <td> <input type="submit" class="btn btn-danger w=100 text-right" value="Delete" /></td>
+                            <td><a asp-action="Index" class="btn btn-success w=140 text-right"> Cancel</a></td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</form>
